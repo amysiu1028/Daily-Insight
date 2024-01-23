@@ -1,6 +1,6 @@
 
 
-// export const getTopHeadlines = (category) => {
+// export const getStories = (category) => {
 //     const apiKey = '3709c47b921c4a5b92f4cf84b4035408'
 //     return fetch(`https://newsapi.org/v2/top-headlines?q=${category}&apiKey=${apiKey}`)
 //     .then(response => {

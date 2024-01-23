@@ -1,4 +1,4 @@
-const sampleData = {
+const general = {
   "status": "ok",
   "totalResults": 12,
   "articles": [
@@ -70,4 +70,4 @@ const sampleData = {
   ]
 }
 
-export default sampleData
+export default general
