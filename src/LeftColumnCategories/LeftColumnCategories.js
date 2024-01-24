@@ -16,16 +16,18 @@ const LeftColumnCategories = ({handleCategoryClick}) => {
   }, [category])
 
   return (
-    <aside className="categories">Categories Container with all NavLinks
+    <aside className="categories">
         <NavLink to='/' >Hot Topics</NavLink>
         {/* id={location.pathname === '/' ? 'active':''} */}
         <NavLink to='/source/business'>Business</NavLink>
         {/* id={location.pathname === '/search/business' ? 'active':''} */}
         <NavLink to='/source/health'>Health</NavLink>
         <NavLink to='/source/entertainment'>Entertainment</NavLink>
-        <NavLink to='/source/entertainment'>Science</NavLink>
-        <NavLink to='/source/entertainment'>Sports</NavLink>
-        <NavLink to='/source/entertainment'>Technology</NavLink>
+        <NavLink to='/source/science'>Science</NavLink>
+        <NavLink to='/source/sports'>Sports</NavLink>
+        <NavLink to='/source/technology'>Technology</NavLink>
+        {/* <NavLink to='/source/music'>Music</NavLink>
+        <NavLink to='/source/art'>Art</NavLink> */}
     </aside>
   )
 }

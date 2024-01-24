@@ -69,7 +69,7 @@ const HomePage = () => {
     }
 
   return (
-    <div>
+    <div className="main-page">
       <div className="header-search-container">
         <Header/>
         <SearchBar filterStories={filterStories}/>
