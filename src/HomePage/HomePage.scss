@@ -1,0 +1,5 @@
+@use '../Styles/mixins.scss'
+
+.header-search-container {
+    @include flex-column-container;
+}

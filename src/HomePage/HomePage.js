@@ -2,20 +2,22 @@
 //https://newsapi.org/v2/everything?q=business&apiKey=3709c47b921c4a5b92f4cf84b4035408
 //useEffects
 import LeftColumnCategories from "../LeftColumnCategories/LeftColumnCategories"
-import { getTopHeadlines } from "../apiCalls"
-import sampleData from "../generalData"
 import { useState, useEffect } from "react"
 import './HomePage.scss'
 import general from "../generalData"
 import health from "../healthData"
 import business from "../businessData"
 import Articles from "../Articles/Articles"
+import SearchBar from "../SearchBar/SearchBar"
+import Header from "../Header/Header"
+import './HomePage.js'
 //rubbber duck! 
 //create sample data for each... business, and things.. create a function... with search query? 
 //rubber ask for help but also figure it out
 const HomePage = () => {
 
     const [ stories, setStories ] = useState([])
+    // const [ filteredStories, setFilteredStories ] = useState([])
 
     const handleCategoryClick = (clickedCategory) => {
       switch (clickedCategory) {
@@ -53,13 +55,29 @@ const HomePage = () => {
         setStories(general.articles)
     }, [])
 
+    const filterStories = (searchQuery) => {
+      const displayFilteredStories = stories.filter((story) => {
+
+        if (!story.author) {
+          story.author = "";
+        }
+
+        return (story.title.toLowerCase().includes(searchQuery.toLowerCase()) || story.description.toLowerCase().includes(searchQuery.toLowerCase()) || story.author.toLowerCase().includes(searchQuery.toLowerCase()) || story.content.toLowerCase().includes(searchQuery.toLowerCase())) 
+      })
+
+      setStories(displayFilteredStories)
+    }
+
   return (
     <div>
-      <LeftColumnCategories handleCategoryClick={handleCategoryClick}/>
-      <Articles stories={stories}/>
-      {/* set the stories... ? or should I do category? */}
-       {/* News  --> SingleNews  stories={stories} */}
-       
+      <div className="header-search-container">
+        <Header/>
+        <SearchBar filterStories={filterStories}/>
+      </div>
+      <div className="leftaside-articles-container">
+        <LeftColumnCategories handleCategoryClick={handleCategoryClick}/>
+        <Articles stories={stories}/>
+      </div>
     </div>
   )
 }
