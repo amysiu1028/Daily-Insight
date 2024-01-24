@@ -1,5 +1,6 @@
 import { useState } from "react"
 import search from '../images/search.png'
+import './SearchBar.scss'
 
 const SearchBar = ({filterStories}) => {
     console.log("filterStories", filterStories)
@@ -18,18 +19,21 @@ const SearchBar = ({filterStories}) => {
     }
 
   return (
-    <form>Search bar
+    <form>
+        <div className="searchinput-img-container">
             <input
             data-test='searchbar'
+            className="searchbar"
             type='text'
+            placeholder="Search..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             ></input>
-            {/* don't want to navigate to new page but want to show so a function? ask chat about this... create a func */}
             <button tabindex='0' data-test='search-button' className='search-img-background' type="submit" value='submit' onClick={(e) =>  searchStories(e)}>
-                <img data-test='search-icon' src={search} alt='Search Icon'></img>
+                <img data-test='search-img' className="search-img" src={search} alt='Search Icon'></img>
             </button>
-            {errorMessage && <h2 data-test='search-error-message' className='error-message'>{errorMessage}</h2>}
+        </div>
+        {errorMessage && <h2 data-test='search-error-message' className='error-message'>{errorMessage}</h2>}
       </form>
   )
 }

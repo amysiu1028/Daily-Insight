@@ -1,5 +1,13 @@
-@use '../Styles/mixins.scss'
+@use '../mixins';
 
 .header-search-container {
-    @include flex-column-container;
+    @include mixins.flex-column-container;
+    border-bottom: 1px solid #5C5C5E;
+    padding: 15vh;
+    margin: 0vh 5vw;
 }
+
+.leftaside-articles-container {
+    @include mixins.flex-row-container
+}
+

@@ -1,0 +1,22 @@
+@use '../mixins';
+
+aside {
+    @include mixins.flex-column-container;
+    margin: 8vw 2vw;
+    a {
+        padding: 2vw;
+        width: 100%;
+        background-color: black;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        margin-left: 8vw;
+    }
+    a:hover {
+        background-color: grey;
+    }
+}
+
+
+

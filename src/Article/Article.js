@@ -1,11 +1,14 @@
 import moment from "moment"
-const Article = ({title, author, description, url, date}) => {
+import './Article.scss'
+
+const Article = ({title, author, description, url, date, img}) => {
    const readableDate = moment(date).utc().format('MM-DD-YYYY')
   return (
-    <div>
+    <div className="single-article">
         <time datetime={date} >{readableDate}</time>
         <h2>{title}</h2>
         <h3>{author}</h3>
+        <img className="article-img" src={img} altText={`Image of ${title}`}></img>
         <p>{description}</p>
         <a href={url}>Read full article</a>
     </div>

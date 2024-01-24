@@ -1,5 +1,6 @@
 
 import Article from "../Article/Article"
+import './Articles.scss'
 
 const Articles = ({stories}) => {
     console.log("stories", stories)
@@ -15,11 +16,12 @@ const Articles = ({stories}) => {
                 url={story.url}
                 key={story.title}
                 date={story.publishedAt}
+                img={story.urlToImage}
             />
         )
     })
   return (
-    <div>
+    <div className="all-articles-container">
         {displaySortedStories}
     </div>
   )
