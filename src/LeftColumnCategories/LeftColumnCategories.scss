@@ -2,21 +2,46 @@
 
 aside {
     @include mixins.flex-column-container;
-    margin: 2vw 2vw;
+    margin: 5px 2vw;
     a {
         padding: 2vw;
+        margin: 5px;
         width: 100%;
-        background-color: black;
+        // background-color: black;
+        background-color: rgba(0, 0, 0, 0.8);
         color: white;
         font-weight: bold;
         text-align: center;
         text-decoration: none;
         margin-left: 8vw;
+        border-radius: 10px;
     }
     a:hover {
-        background-color: grey;
+        // background-color: grey;
+        background-color: rgb(128 128 128);
+        cursor: pointer;
+    }
+    .categories {
+        justify-content: space-evenly;
     }
 }
 
+@media (max-width: 921px) {
+    .categories {
+        justify-content: space-evenly;
+    }
+    aside {
+        width: 25%;
+    }
+}   
+
+@media (max-width: 475px) {
+    .categories {
+        justify-content: space-evenly;
+    }
+    aside {
+        width: 25%;
+    }
+}   
 
 

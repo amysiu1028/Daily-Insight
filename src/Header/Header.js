@@ -1,9 +1,15 @@
 
-import './Header.js'
+import './Header.scss'
+import logo from '../images/logo.png'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   return (
-    <h1>Daily Insight</h1>
+    <div>
+        <Link to='/'>
+            <img className='logo' data-test='logo' src={logo} alt='Logo states Daily Insights'></img>
+        </Link>
+    </div>
   )
 }
 

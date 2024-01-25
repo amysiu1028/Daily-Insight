@@ -7,9 +7,9 @@ const Article = ({title, author, description, url, date, img}) => {
     <div className="single-article">
         <time datetime={date} >{readableDate}</time>
         <h2>{title}</h2>
-        <h3>{author}</h3>
-        <img className="article-img" src={img} altText={`Image of ${title}`}></img>
         <p>{description}</p>
+        <img className="article-img" src={img} altText={`Image of ${title}`}></img>
+        <p>Written by: {author}</p>
         <a href={url}>Read full article</a>
     </div>
   )

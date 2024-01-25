@@ -14,7 +14,7 @@ const Articles = ({stories}) => {
                 author={story.author}
                 description={story.description}
                 url={story.url}
-                key={story.title}
+                key={story.url}
                 date={story.publishedAt}
                 img={story.urlToImage}
             />

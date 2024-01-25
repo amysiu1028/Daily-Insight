@@ -4,23 +4,31 @@ import { useEffect } from "react"
 import './LeftColumnCategories.scss'
 import { NavLink } from "react-router-dom"
 import { useParams } from "react-router-dom"
+import { getStories, getGeneralStories } from "../apiCalls"
 
-
-const LeftColumnCategories = ({handleCategoryClick}) => {
+const LeftColumnCategories = ({handleCategoryClick,handleHotTopicsClick}) => {
     const { category } = useParams()
     console.log("category",category)
 
     useEffect(() => {
-      console.log("Category changed:", category);
-      handleCategoryClick(category)
-  }, [category])
+      if (category) {
+        getStories(category)
+          .then(response => {
+            console.log("response", response);
+            handleCategoryClick(response);
+          });
+      } else {
+        getGeneralStories()
+          .then(hottopicsData => {
+            handleHotTopicsClick(hottopicsData)
+          });
+      }
+    }, [category]);    
 
   return (
     <aside className="categories">
-        <NavLink to='/' >Hot Topics</NavLink>
-        {/* id={location.pathname === '/' ? 'active':''} */}
+        <NavLink to='/'>Hot Topics</NavLink>
         <NavLink to='/source/business'>Business</NavLink>
-        {/* id={location.pathname === '/search/business' ? 'active':''} */}
         <NavLink to='/source/health'>Health</NavLink>
         <NavLink to='/source/entertainment'>Entertainment</NavLink>
         <NavLink to='/source/science'>Science</NavLink>
