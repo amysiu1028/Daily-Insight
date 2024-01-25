@@ -1,14 +1,12 @@
-
-
 import { useEffect } from "react"
 import './LeftColumnCategories.scss'
-import { NavLink } from "react-router-dom"
+import { NavLink, useLocation } from "react-router-dom"
 import { useParams } from "react-router-dom"
 import { getStories, getGeneralStories } from "../apiCalls"
 
-const LeftColumnCategories = ({handleCategoryClick,handleHotTopicsClick}) => {
+const LeftColumnCategories = ({handleCategoryClick}) => {
     const { category } = useParams()
-    console.log("category",category)
+    const location = useLocation();
 
     useEffect(() => {
       if (category) {
@@ -18,24 +16,26 @@ const LeftColumnCategories = ({handleCategoryClick,handleHotTopicsClick}) => {
             handleCategoryClick(response);
           });
       } else {
-        getGeneralStories()
-          .then(hottopicsData => {
-            handleHotTopicsClick(hottopicsData)
-          });
+        // If the location has changed due to search, fetch general stories
+        if (location.pathname === '/source/general') {
+          getGeneralStories()
+            .then(response => {
+              handleCategoryClick(response);
+              // handleHotTopicsClick(hottopicsData);
+            });
+        }
       }
-    }, [category]);    
+    }, [category, location.pathname]);    
 
   return (
     <aside className="categories">
-        <NavLink to='/'>Hot Topics</NavLink>
-        <NavLink to='/source/business'>Business</NavLink>
+        <NavLink to='/source/general'>General</NavLink>
+        <NavLink data-test='business-link' to='/source/business'>Business</NavLink>
         <NavLink to='/source/health'>Health</NavLink>
         <NavLink to='/source/entertainment'>Entertainment</NavLink>
         <NavLink to='/source/science'>Science</NavLink>
         <NavLink to='/source/sports'>Sports</NavLink>
         <NavLink to='/source/technology'>Technology</NavLink>
-        {/* <NavLink to='/source/music'>Music</NavLink>
-        <NavLink to='/source/art'>Art</NavLink> */}
     </aside>
   )
 }

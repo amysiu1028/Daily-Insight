@@ -3,10 +3,7 @@ import Article from "../Article/Article"
 import './Articles.scss'
 
 const Articles = ({stories}) => {
-    console.log("stories", stories)
     const sortByMostRecent = stories.sort((a, b) => b.publishedAt - a.publishedAt)
-    console.log("sortByMostRecent",sortByMostRecent)
-
     const displaySortedStories = sortByMostRecent.map((story) => {
         return (
             <Article
@@ -21,7 +18,7 @@ const Articles = ({stories}) => {
         )
     })
   return (
-    <div className="all-articles-container">
+    <div data-test='all-articles' className="all-articles-container">
         {displaySortedStories}
     </div>
   )
