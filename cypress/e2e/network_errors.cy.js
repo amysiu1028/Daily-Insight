@@ -20,7 +20,6 @@ describe('Network Errors', () => {
       statusCode: 404,
     }).as('NotFound');
     cy.visit('http://localhost:3000/source/business/i')    
-    // cy.wait('@NotFound')
-    cy.get("[data-test='not-found']").contains('p', "404 Page Not Found: The page you are looking for doesn't exist.");
+\    cy.get("[data-test='not-found']").contains('p', "404 Page Not Found: The page you are looking for doesn't exist.");
   })
 })
