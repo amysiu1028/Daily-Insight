@@ -6,10 +6,10 @@ const Article = ({title, author, description, url, date, img}) => {
    const readableDate = moment(date).utc().format('MM-DD-YYYY')
   return (
     <div className="single-article">
-        <time datetime={date} >{readableDate}</time>
+        <time dateTime={date} >{readableDate}</time>
         <h2>{title}</h2>
         <p>{description}</p>
-        <img data-test='article-img' className="article-img" src={img} altText={`Image of ${title}`}></img>
+        <img data-test='article-img' className="article-img" src={img} alttext={`Image of ${title}`}></img>
         <p>Written by: {author}</p>
         <a href={url}>Read full article</a>
     </div>

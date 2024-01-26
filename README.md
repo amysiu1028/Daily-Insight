@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# News Reader
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+  
+  News Reader
+ ![Tests](https://badgen.net/badge/tests/passing/green?icon=github)
 
-## Available Scripts
+  ## 💻 Technologies Used
+![React](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![React Router](https://img.shields.io/badge/react--router-%23CA4245.svg?style=for-the-badge&logo=react-router&logoColor=white)
+![Axios](https://img.shields.io/badge/Axios-%23323330.svg?style=for-the-badge&logo=axios&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 
-In the project directory, you can run:
+  ## 👨‍💻 Author
+[Your Name](https://github.com/yourusername) 
+</div>
 
-### `npm start`
+## 💡 Project Overview
+Create a news reader application that fetches articles from the News API. The app should allow users to browse a list of articles with headline, image, description (if present), and date. Additionally, implement a detailed view for each article with headline, image, date, content, and source. The list of articles should link to a detailed view within the app (not to the source website). Implement some form of search, filter, or sort functionality for a better user experience. The application should be responsive and usable on desktop, tablet, and mobile devices.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🚀 Features
+- Display a list of articles with headline, image, description (if present), and date.
+- Implement a detailed view for each article with headline, image, date, content, and source.
+- Link articles in the list to a detailed article view within the app.
+- Include search, filter, or sort functionality for improved user experience.
+- Ensure the application is responsive and works seamlessly across desktop, tablet, and mobile devices.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📝 Development Notes
+- During development, use mock data to limit actual requests (considering the API's request limit).
+- For demonstration/evaluation, make live requests to the News API.
+- Prioritize features for MVP and ensure a clean, well-thought-out codebase.
+- Consider basic usability practices and standards, maintaining a clear hierarchy of information.
 
-### `npm test`
+## 🖥️ Demo
+[Link to your live News Reader Application](#)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🔧 Setup
+1. **Clone the repository:** Open a terminal window. Navigate to the directory where you want to clone the repository: `git clone (git@github.com:yourusername/NewsReader.git)`
+2. **Install the dependencies:** Run the following command in the cloned repository directory: `npm install`
+3. **Run the React app:** Run the following command in the cloned repository directory: `npm start`
+4. **Open the app in your web browser by navigating to:** [http://localhost:3000](http://localhost:3000)
 
-### `npm run build`
+## 🧐 Evaluation
+Things we'll be looking for:
+- Strong understanding of React JS and Front-End best practices.
+- Ability to prioritize for MVP.
+- Understanding of basic usability practices and standards.
+- Clear hierarchy of information in the user interface.
+- Clean, well-thought-out code with attention to detail.
+- Consideration of user needs and a user-friendly news feed.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## ⏰ Time Management
+Try to limit your total time to around 8 hours on this project. Prioritize what is important to get the feed working and as close to MVP as possible. Remember, we're looking for clean code and problem-solving skills, not a fully-fledged newspaper website. Focus on a user-friendly and functional news reader.

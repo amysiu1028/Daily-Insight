@@ -32,7 +32,7 @@ const SearchBar = ({filterStories}) => {
             onChange={(e) => setSearchQuery(e.target.value)}
             ></input>
             <Link to={`${searchQuery}`}>
-                <button tabindex='0' data-test='search-button' className='search-img-background' type="submit" value='submit' onClick={(e) =>  searchStories(e)}>
+                <button tabIndex='0' data-test='search-button' className='search-img-background' type="submit" value='submit' onClick={(e) =>  searchStories(e)}>
                     <img data-test='search-img' className="search-img" src={search} alt='Search Icon'></img>
                 </button>
             </Link>
