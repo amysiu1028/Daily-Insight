@@ -23,11 +23,6 @@ const HomePage = () => {
         setStories(response.articles)
       }
 
-    // const handleHotTopicsClick = (hottopicData) => {
-    //   setStories(hottopicData.articles)
-    // }
-
-    //By using optional chaining (?.), you're checking if each property exists before attempting to call toLowerCase(). This helps prevent the error when a property is null or undefined. Adjust the code according to your specific use case and data structure.
     const filterStories = (searchQuery) => {
       const displayFilteredStories = stories.filter((story) => {
         if (!story.author) {
@@ -53,7 +48,6 @@ const HomePage = () => {
         <Articles stories={stories}/>
       </div>
     </div>
-    // handleHotTopicsClick={handleHotTopicsClick}
   )
 }
 

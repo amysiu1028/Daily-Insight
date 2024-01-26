@@ -12,6 +12,9 @@ export const getAllStories = () => {
         }
         return response.json();
     })
+    .catch(error => {
+        console.error('Error:', error);
+      });
 }
 
 export const getGeneralStories = () => {
@@ -27,6 +30,9 @@ export const getGeneralStories = () => {
         }
         return response.json();
     })
+    .catch(error => {
+        console.error('Error:', error);
+      });
 }
 
 export const getStories = (category) => {
@@ -43,5 +49,8 @@ export const getStories = (category) => {
         }
         return response.json();
     })
+    .catch(error => {
+        console.error('Error:', error);
+      });
 }
 

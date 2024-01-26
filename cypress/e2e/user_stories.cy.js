@@ -1,3 +1,10 @@
+
+//network errros
+//favicon
+
+//Best practice: to have a separate component for your main content, such as a HomePage component, and use the App component for overall layout and routing. This approach follows the principle of component-based architecture and helps in organizing your code in a modular and maintainable way.
+
+//implement local storage
 describe('Display homepage', () => {
   beforeEach(() => {
     cy.intercept('GET','https://newsapi.org/v2/everything?domains=techcrunch.com,thenextweb.com&apiKey=3709c47b921c4a5b92f4cf84b4035408', {
@@ -42,59 +49,33 @@ describe('Display homepage', () => {
     .get("[data-test='all-articles']").contains('p','Alexander Zverev made no mistake with his second chance to close out a win over No. 2-ranked Carlos Alcaraz and moved into an Australian Open semifinal against two-time finalist Daniil Medvedev.')
     .get("[data-test='article-img']").should('have.attr','src','https://a1.espncdn.com/combiner/i?img=%2Fphoto%2F2024%2F0124%2Fr1281644_1296x729_16%2D9.jpg')
   })
-
-  // //should show that user can click a category and then display that category
-  // it('should be be able to click a category on left column and show the stories of that category', () => {
-  //   cy.intercept('GET', 'https://newsapi.org/v2/business?country=us&apiKey=3709c47b921c4a5b92f4cf84b4035408', {
-  //     statusCode: 200,
-  //     fixture: 'businessStories'
-  //   }).as('Businesspage');
-
-    
-
-  //   cy.get("[data-test='all-articles']").children().should('have.length',3)
-
-  //   cy.get("[data-test='all-articles']").first().contains('h2','Raskin demands Trump Org turn over business records in probe of foreign payments')
-  //   cy.get("[data-test='all-articles']").first().contains('p','The top Democrat on the House Oversight Committee is asking the Trump Organization to turn over the entirety of its business records, arguing it’s the only way the panel can understand the full extent to which former President Trump profited from foreign gove…')
-  //   cy.get("[data-test='article-img']").first().should('have.attr','src','https://thehill.com/wp-content/uploads/sites/2/2024/01/raskinjamie_011024gn01_w.jpg?w=1280')
-
-  //   cy.get("[data-test='all-articles']").last().contains('h2','Live news: Canada on track to miss fiscal targets aimed at keeping deficit in control')
-  //   cy.get("[data-test='all-articles']").last().contains('p','The Financial Post brings you the top business stories as they happen for January 22, 2024. Read on for breaking news you need to know.')
-  //   cy.get("[data-test='article-img']").last().should('have.attr','src','https://smartcdn.gprod.postmedia.digital/financialpost/wp-content/uploads/2024/01/freeland-trudeau-vw0122.jpg')
-  //   // Click the general link to go back to the general stories
-  //   // cy.get("[data-test='general-link']").click();
-  // })
 })
 
-describe('Display homepage', () => {
+describe('Display new stories based on user category click', () => {
   beforeEach(() => {
     cy.intercept('GET','https://newsapi.org/v2/everything?domains=techcrunch.com,thenextweb.com&apiKey=3709c47b921c4a5b92f4cf84b4035408', {
       fixture: 'generalstories'
     }).as('Homepage')
     cy.visit('http://localhost:3000/')
     cy.wait('@Homepage')
-    cy.get("[data-test='business-link']").click();
 
-    cy.intercept('GET', 'https://newsapi.org/v2/business?country=us&apiKey=3709c47b921c4a5b92f4cf84b4035408', {
+    cy.intercept('GET', 'https://newsapi.org/v2/top-headlines?q=business&apiKey=3709c47b921c4a5b92f4cf84b4035408', {
     statusCode: 200,
-    response: {
-      fixture: 'businessStories'
-    }
+    fixture: 'businessStories'
     }).as('Businesspage');
+    cy.get("[data-test='business-link']").click();
+    cy.visit('http://localhost:3000/source/business')
+    cy.wait('@Businesspage', { timeout: 10000 });
   })
 
-  
-
   it('should be be able to click a category on left column and show the stories of that category', () => {
-    
-    cy.get("[data-test='all-articles']").children().should('have.length',3)
-
+    cy.get("[data-test='all-articles']").children().should('have.length',4)
     cy.get("[data-test='all-articles']").first().contains('h2','Raskin demands Trump Org turn over business records in probe of foreign payments')
     cy.get("[data-test='all-articles']").first().contains('p','The top Democrat on the House Oversight Committee is asking the Trump Organization to turn over the entirety of its business records, arguing it’s the only way the panel can understand the full extent to which former President Trump profited from foreign gove…')
+    cy.get("[data-test='article-img']").last().should('have.attr','src','https://thehill.com/wp-content/uploads/sites/2/2024/01/raskinjamie_011024gn01_w.jpg?w=1280')
 
     cy.get("[data-test='all-articles']").last().contains('h2','Live news: Canada on track to miss fiscal targets aimed at keeping deficit in control')
     cy.get("[data-test='all-articles']").last().contains('p','The Financial Post brings you the top business stories as they happen for January 22, 2024. Read on for breaking news you need to know.')
     cy.get("[data-test='article-img']").last().should('have.attr','src','https://smartcdn.gprod.postmedia.digital/financialpost/wp-content/uploads/2024/01/freeland-trudeau-vw0122.jpg')
   })
-
 })
