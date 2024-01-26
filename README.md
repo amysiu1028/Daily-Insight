@@ -15,14 +15,14 @@
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 
   ## 👨‍💻 Author
-[Your Name](https://github.com/yourusername) 
+[Amy Siu](https://github.com/asiu1028) 
 </div>
 
 ## 💡 Project Overview
 Create a news reader application that fetches articles from the News API. The app should allow users to browse a list of articles with headline, image, description (if present), and date. Additionally, implement a detailed view for each article with headline, image, date, content, and source. The list of articles should link to a detailed view within the app (not to the source website). Implement some form of search, filter, or sort functionality for a better user experience. The application should be responsive and usable on desktop, tablet, and mobile devices.
 
 ## 🚀 Features
-- Display a list of articles with headline, image, description (if present), and date.
+- Display a responsive application with a list of articles with headline, image, description (if present), and date.
 - Implement a detailed view for each article with headline, image, date, content, and source.
 - Link articles in the list to a detailed article view within the app.
 - Include search, filter, or sort functionality for improved user experience.
@@ -34,11 +34,8 @@ Create a news reader application that fetches articles from the News API. The ap
 - Prioritize features for MVP and ensure a clean, well-thought-out codebase.
 - Consider basic usability practices and standards, maintaining a clear hierarchy of information.
 
-## 🖥️ Demo
-[Link to your live News Reader Application](#)
-
 ## 🔧 Setup
-1. **Clone the repository:** Open a terminal window. Navigate to the directory where you want to clone the repository: `git clone (git@github.com:yourusername/NewsReader.git)`
+1. **Clone the repository:** Open a terminal window. Navigate to the directory where you want to clone the repository
 2. **Install the dependencies:** Run the following command in the cloned repository directory: `npm install`
 3. **Run the React app:** Run the following command in the cloned repository directory: `npm start`
 4. **Open the app in your web browser by navigating to:** [http://localhost:3000](http://localhost:3000)
