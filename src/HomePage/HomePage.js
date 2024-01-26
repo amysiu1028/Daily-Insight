@@ -1,60 +1,62 @@
-//can filter based off of searchquery!
-//https://newsapi.org/v2/everything?q=business&apiKey=3709c47b921c4a5b92f4cf84b4035408
-//useEffects
+
 import LeftColumnCategories from "../LeftColumnCategories/LeftColumnCategories"
-import { getTopHeadlines } from "../apiCalls"
-import sampleData from "../sampleData"
 import { useState, useEffect } from "react"
 import './HomePage.scss'
-import sampleData from "../sampleData"
-//rubbber duck! 
-//create sample data for each... business, and things.. create a function... with search query? 
-//rubber ask for help but also figure it out
+import Articles from "../Articles/Articles"
+import SearchBar from "../SearchBar/SearchBar"
+import Header from "../Header/Header"
+import './HomePage.js'
+import { getAllStories } from "../apiCalls.js"
+
 const HomePage = () => {
-
     const [ stories, setStories ] = useState([])
-    //what's going to change? 
+    const [ error, setError ] = useState("")
 
-    //search bar - in search bar news
-
-    //news 
-
-    //top headlines on mainpage
-     //search bar
-    //categories
-    //section vh and vw 100%
-    //section with column (left-column)
-
-    //right column
-    //colors democracy now
-
-
-    //logo: 
-    //business
-    //entertainment
-    //general
-    //health
-    //science
-    //sports
-    //technology
     useEffect(() => {
-        // getTopHeadlines(business)
-        // setStories(sampleData.articles)
-        setStories(sampleData.articles)
-        // .then(topHeadlineData => {
-        //     console.log('topHeadline', topHeadlineData)
-
-        // })
+      getAllStories()
+      .then(allStoryData => {
+        setStories(allStoryData.articles)
+      })
+      .catch(error => {
+        setError(error);
+      });
     }, [])
 
-    console.log(stories,"stories")
+    const handleCategoryClick = (response) => {
+        setStories(response.articles)
+      }
+
+    const filterStories = (searchQuery) => {
+      const displayFilteredStories = stories.filter((story) => {
+        if (!story.author) {
+          story.author = "";
+        }
+        return (
+          story.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          story.description?.toLowerCase().includes(searchQuery.toLowerCase()) || 
+          story.author?.toLowerCase().includes(searchQuery.toLowerCase()) || 
+          story.content?.toLowerCase().includes(searchQuery.toLowerCase())) 
+      })
+      setStories(displayFilteredStories)
+    }
+
   return (
     <div>
-      <LeftColumnCategories stories={stories}/>
-       {/* News  --> SingleNews */}
-       
-    </div>
+      { error ? (<h2 data-test='error-message'>{`${error}`}</h2>) : (
+        <div className="main-page">
+          <div className="header-search-container">
+            <Header/>
+            <SearchBar filterStories={filterStories}/>
+          </div>
+          <div className="leftaside-articles-container">
+            <LeftColumnCategories handleCategoryClick={handleCategoryClick}/>
+            <Articles stories={stories}/>
+          </div>
+        </div>
+      )}
+      </div>
   )
 }
 
 export default HomePage
+ 

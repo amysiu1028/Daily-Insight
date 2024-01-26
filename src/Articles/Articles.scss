@@ -1,0 +1,10 @@
+.all-articles-container {
+    width: 75vw;
+    margin-left: 2vw;
+    max-height: 100%;
+    overflow-y: auto; /* Enable vertical scrolling when content exceeds the height */
+}
+
+.error-message-container {
+    margin-left: 70px;
+}

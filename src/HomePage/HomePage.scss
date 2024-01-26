@@ -1,0 +1,23 @@
+@use '../mixins';
+
+.main-page {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden; /* Hide the overflow from the main page */
+}
+
+.header-search-container {
+    @include mixins.flex-column-container;
+    border-bottom: 1.5px solid #0e0e0e;
+    padding: 5vh;
+    margin: 0vh 5vw;
+    margin: 5px 10;
+    
+}
+
+.leftaside-articles-container {
+    @include mixins.flex-row-container; 
+    max-height: 80vh; /* Set a maximum height for the container (adjust as needed) */
+    overflow-y: auto; /* Enable vertical scrolling when content exceeds the height */
+}
+
