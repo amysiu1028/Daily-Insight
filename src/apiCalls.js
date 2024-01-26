@@ -4,17 +4,10 @@ export const getAllStories = () => {
     return fetch(`https://newsapi.org/v2/everything?domains=techcrunch.com,thenextweb.com&apiKey=${apiKey}`)
     .then(response => {
         if (!response.ok) {
-            //research this:
-            if (response.status === 500) {
-              throw new Error('No stories found');
-            }
             throw new Error(`${response.status}: ${response.message}`);
         }
         return response.json();
     })
-    .catch(error => {
-        console.error('Error:', error);
-      });
 }
 
 export const getGeneralStories = () => {
@@ -22,17 +15,13 @@ export const getGeneralStories = () => {
     return fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`)
     .then(response => {
         if (!response.ok) {
-            //research this:
-            if (response.status === 500) {
-              throw new Error('No stories found');
-            }
             throw new Error(`${response.status}: ${response.message}`);
         }
         return response.json();
     })
     .catch(error => {
-        console.error('Error:', error);
-      });
+        console.log(error);
+    });
 }
 
 export const getStories = (category) => {
@@ -40,17 +29,13 @@ export const getStories = (category) => {
     return fetch(`https://newsapi.org/v2/top-headlines?q=${category}&apiKey=${apiKey}`)
     .then(response => {
         if (!response.ok) {
-            //research this:
-            if (response.status === 500) {
-              throw new Error('No stories found');
-            }
             console.log('response under top headline, if not received, server error? check with chat', response)
             throw new Error(`${response.status}: ${response.message}`);
         }
         return response.json();
     })
     .catch(error => {
-        console.error('Error:', error);
-      });
+        console.log(error);
+    });
 }
 

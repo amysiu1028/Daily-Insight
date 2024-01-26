@@ -10,13 +10,16 @@ import { getAllStories } from "../apiCalls.js"
 
 const HomePage = () => {
     const [ stories, setStories ] = useState([])
-    
+    const [ error, setError ] = useState("")
+
     useEffect(() => {
       getAllStories()
       .then(allStoryData => {
-        console.log(allStoryData,"allStoryData")
         setStories(allStoryData.articles)
       })
+      .catch(error => {
+        setError(error);
+      });
     }, [])
 
     const handleCategoryClick = (response) => {
@@ -38,16 +41,20 @@ const HomePage = () => {
     }
 
   return (
-    <div className="main-page">
-      <div className="header-search-container">
-        <Header/>
-        <SearchBar filterStories={filterStories}/>
+    <div>
+      { error ? (<h2 data-test='error-message'>{`${error}`}</h2>) : (
+        <div className="main-page">
+          <div className="header-search-container">
+            <Header/>
+            <SearchBar filterStories={filterStories}/>
+          </div>
+          <div className="leftaside-articles-container">
+            <LeftColumnCategories handleCategoryClick={handleCategoryClick}/>
+            <Articles stories={stories}/>
+          </div>
+        </div>
+      )}
       </div>
-      <div className="leftaside-articles-container">
-        <LeftColumnCategories handleCategoryClick={handleCategoryClick}/>
-        <Articles stories={stories}/>
-      </div>
-    </div>
   )
 }
 

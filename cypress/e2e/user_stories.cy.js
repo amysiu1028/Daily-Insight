@@ -1,5 +1,4 @@
 
-//network errros
 //favicon
 
 //Best practice: to have a separate component for your main content, such as a HomePage component, and use the App component for overall layout and routing. This approach follows the principle of component-based architecture and helps in organizing your code in a modular and maintainable way.
@@ -52,7 +51,7 @@ describe('Display homepage', () => {
 })
 
 describe('Display new stories based on user category click', () => {
-  beforeEach(() => {
+  it('should be be able to click a category on left column and show the stories of that category', () => {
     cy.intercept('GET','https://newsapi.org/v2/everything?domains=techcrunch.com,thenextweb.com&apiKey=3709c47b921c4a5b92f4cf84b4035408', {
       fixture: 'generalstories'
     }).as('Homepage')
@@ -64,15 +63,12 @@ describe('Display new stories based on user category click', () => {
     fixture: 'businessStories'
     }).as('Businesspage');
     cy.get("[data-test='business-link']").click();
-    cy.visit('http://localhost:3000/source/business')
-    cy.wait('@Businesspage', { timeout: 10000 });
-  })
-
-  it('should be be able to click a category on left column and show the stories of that category', () => {
+    cy.wait('@Businesspage')
+    
     cy.get("[data-test='all-articles']").children().should('have.length',4)
     cy.get("[data-test='all-articles']").first().contains('h2','Raskin demands Trump Org turn over business records in probe of foreign payments')
     cy.get("[data-test='all-articles']").first().contains('p','The top Democrat on the House Oversight Committee is asking the Trump Organization to turn over the entirety of its business records, arguing it’s the only way the panel can understand the full extent to which former President Trump profited from foreign gove…')
-    cy.get("[data-test='article-img']").last().should('have.attr','src','https://thehill.com/wp-content/uploads/sites/2/2024/01/raskinjamie_011024gn01_w.jpg?w=1280')
+    cy.get("[data-test='article-img']").first().should('have.attr','src','https://thehill.com/wp-content/uploads/sites/2/2024/01/raskinjamie_011024gn01_w.jpg?w=1280')
 
     cy.get("[data-test='all-articles']").last().contains('h2','Live news: Canada on track to miss fiscal targets aimed at keeping deficit in control')
     cy.get("[data-test='all-articles']").last().contains('p','The Financial Post brings you the top business stories as they happen for January 22, 2024. Read on for breaking news you need to know.')
