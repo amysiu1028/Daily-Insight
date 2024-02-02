@@ -21,7 +21,6 @@ const LeftColumnCategories = ({handleCategoryClick}) => {
           getGeneralStories()
             .then(response => {
               handleCategoryClick(response);
-              // handleHotTopicsClick(hottopicsData);
             });
         }
       }
