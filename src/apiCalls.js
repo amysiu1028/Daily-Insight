@@ -1,4 +1,7 @@
 
+//environment variables - can be used .env files (put any secrets - this can be added to gitignore)
+//never expose apiKey 
+
 export const getAllStories = () => {
     const apiKey = '3709c47b921c4a5b92f4cf84b4035408'
     return fetch(`https://newsapi.org/v2/everything?domains=techcrunch.com,thenextweb.com&apiKey=${apiKey}`)
